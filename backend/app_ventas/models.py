@@ -1,6 +1,6 @@
-from django.db import models
 
 from django.db import models
+import uuid
 
 class Cliente(models.Model):
     cedula = models.CharField(max_length=20, unique=True)
@@ -27,6 +27,11 @@ class CabeceraVenta(models.Model):
     fecha = models.DateTimeField(auto_now_add=True)
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     total_venta = models.DecimalField(max_digits=12, decimal_places=2)
+
+    def save(self, *args, **kwargs):
+        if not self.consecutivo:
+            self.consecutivo = f"AA-{uuid.uuid4().hex[:8].upper()}"
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f"Venta {self.consecutivo}"
