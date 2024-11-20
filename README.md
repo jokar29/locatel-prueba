@@ -7,7 +7,7 @@ Este proyecto es un sistema básico para gestionar las ventas de productos de as
 
 # Requisitos Generales:
 Python 3.10.2 (para el backend).
-Node.js 16+ (para el frontend).
+react (para el frontend).
 Base de datos PostgreSQL.
 # Dependencias principales:
 Backend:
@@ -31,9 +31,6 @@ Instala las dependencias:
 pip install -r requirements.txt
 Configura las variables de entorno en .env:
 
-SECRET_KEY=tu_clave_secreta
-DEBUG=True
-DATABASE_URL=postgres://usuario:contraseña@localhost:5432/sistema_ventas
 Realiza las migraciones:
 
 python manage.py makemigrations
