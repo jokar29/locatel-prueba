@@ -18,15 +18,15 @@ class VentaSerializer(serializers.Serializer):
         model = CabeceraVenta
         fields = '__all__'
 
-    # def create(self, validated_data):
+    def create(self, validated_data):
 
-    #     detalles_data = validated_data.pop('detalles')
-    #     with transaction.atomic(): 
-    #         venta = CabeceraVenta.objects.create(**validated_data)
-    #         for detalle in detalles_data:
-    #             DetalleVenta.objects.create(cabecera=venta, **detalle)
+        detalles_data = validated_data.pop('detalles')
+        with transaction.atomic(): 
+            venta = CabeceraVenta.objects.create(**validated_data)
+            for detalle in detalles_data:
+                DetalleVenta.objects.create(cabecera=venta, **detalle)
 
-    #     return venta
+        return venta
 
 class DetalleVentaSerializer(serializers.Serializer):
     class Meta:
